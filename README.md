@@ -1,3 +1,3 @@
 # Vibe Cheat Sheet
 
-A Short Key Cheat Sheet provides a quick reference guide to essential keyboard shortcuts for various applications or systems. It helps users work more efficiently by listing common key combinations for actions like copy, paste, undo, save, switch tabs, and more.
+Vibe Cheat Sheet is a quick-reference tool for storing essential tips, commands, codes, and shortcuts. Organize and access handy information for work, study, or projects—perfect for developers, students, and professionals needing instant knowledge at hand.
