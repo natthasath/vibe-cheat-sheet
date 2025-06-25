@@ -1,0 +1,38 @@
+{
+    "id": "canva",
+    "name": "Canva",
+    "description": "Graphic Design Platform สำหรับสร้างงานดิไซน์",
+    "icon": "CV",
+    "iconClass": "canva-icon",
+    "categories": {
+        "ทั่วไป": [
+            { "desc": "Undo", "keys": ["Ctrl", "Z"] },
+            { "desc": "Redo", "keys": ["Ctrl", "Y"] },
+            { "desc": "Copy", "keys": ["Ctrl", "C"] },
+            { "desc": "Paste", "keys": ["Ctrl", "V"] },
+            { "desc": "Duplicate", "keys": ["Ctrl", "D"] }
+        ],
+        "การจัดการ Elements": [
+            { "desc": "Group Elements", "keys": ["Ctrl", "G"] },
+            { "desc": "Ungroup Elements", "keys": ["Ctrl", "Shift", "G"] },
+            { "desc": "Bring Forward", "keys": ["Ctrl", "]"] },
+            { "desc": "Send Backward", "keys": ["Ctrl", "["] },
+            { "desc": "Bring to Front", "keys": ["Ctrl", "Shift", "]"] },
+            { "desc": "Send to Back", "keys": ["Ctrl", "Shift", "["] }
+        ],
+        "ข้อความ": [
+            { "desc": "Bold Text", "keys": ["Ctrl", "B"] },
+            { "desc": "Italic Text", "keys": ["Ctrl", "I"] },
+            { "desc": "Underline Text", "keys": ["Ctrl", "U"] },
+            { "desc": "Increase Font Size", "keys": ["Ctrl", "Shift", ">"] },
+            { "desc": "Decrease Font Size", "keys": ["Ctrl", "Shift", "<"] }
+        ],
+        "การแสดงผล": [
+            { "desc": "Zoom In", "keys": ["Ctrl", "+"] },
+            { "desc": "Zoom Out", "keys": ["Ctrl", "-"] },
+            { "desc": "Fit to Screen", "keys": ["Ctrl", "0"] },
+            { "desc": "Actual Size", "keys": ["Ctrl", "1"] },
+            { "desc": "Present", "keys": ["Ctrl", "Enter"] }
+        ]
+    }
+}

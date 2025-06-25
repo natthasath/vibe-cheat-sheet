@@ -118,6 +118,44 @@ body {
     margin-top: 15px;
 }
 
+/* Loading and Error States */
+.loading-message, .error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 30px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.loading-spinner {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: spin 2s linear infinite;
+}
+
+.error-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.loading-message h3, .error-message h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.loading-message p, .error-message p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 .detail-view {
     display: none;
     background: rgba(255,255,255,0.95);
@@ -263,5 +301,9 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+    }
+    
+    .loading-message, .error-message {
+        padding: 40px 20px;
     }
 }

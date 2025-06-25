@@ -1,0 +1,37 @@
+{
+    "id": "capcut",
+    "name": "CapCut",
+    "description": "Video Editor สำหรับการตัดต่อวิดีโอ",
+    "icon": "CC",
+    "iconClass": "capcut-icon",
+    "categories": {
+        "การนำเข้าและส่งออก": [
+            { "desc": "Import Media", "keys": ["Ctrl", "I"] },
+            { "desc": "Export Video", "keys": ["Ctrl", "E"] },
+            { "desc": "New Project", "keys": ["Ctrl", "N"] },
+            { "desc": "Save Project", "keys": ["Ctrl", "S"] }
+        ],
+        "Timeline": [
+            { "desc": "Play/Pause", "keys": ["Space"] },
+            { "desc": "Split Clip", "keys": ["Ctrl", "B"] },
+            { "desc": "Delete Selected", "keys": ["Delete"] },
+            { "desc": "Undo", "keys": ["Ctrl", "Z"] },
+            { "desc": "Redo", "keys": ["Ctrl", "Y"] }
+        ],
+        "การเล่น": [
+            { "desc": "Go to Beginning", "keys": ["Home"] },
+            { "desc": "Go to End", "keys": ["End"] },
+            { "desc": "Previous Frame", "keys": ["←"] },
+            { "desc": "Next Frame", "keys": ["→"] },
+            { "desc": "Jump Back 10s", "keys": ["J"] },
+            { "desc": "Jump Forward 10s", "keys": ["L"] }
+        ],
+        "เครื่องมือ": [
+            { "desc": "Selection Tool", "keys": ["V"] },
+            { "desc": "Cut Tool", "keys": ["C"] },
+            { "desc": "Zoom In", "keys": ["Ctrl", "+"] },
+            { "desc": "Zoom Out", "keys": ["Ctrl", "-"] },
+            { "desc": "Fit to Screen", "keys": ["Ctrl", "0"] }
+        ]
+    }
+}

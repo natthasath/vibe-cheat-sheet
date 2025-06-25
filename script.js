@@ -1,122 +1,85 @@
-// JSON Data for shortcuts
-const programsData = {
-    "vscode": {
-        "name": "Visual Studio Code",
-        "description": "Code Editor ที่มีประสิทธิภาพสูง",
-        "icon": "VS",
-        "iconClass": "vscode-icon",
-        "categories": {
-            "ทั่วไป": [
-                { "desc": "Command Palette", "keys": ["Ctrl", "Shift", "P"] },
-                { "desc": "Quick Open File", "keys": ["Ctrl", "P"] },
-                { "desc": "Settings", "keys": ["Ctrl", ","] },
-                { "desc": "Toggle Terminal", "keys": ["Ctrl", "`"] },
-                { "desc": "New File", "keys": ["Ctrl", "N"] }
-            ],
-            "การแก้ไข": [
-                { "desc": "Copy Line", "keys": ["Ctrl", "C"] },
-                { "desc": "Cut Line", "keys": ["Ctrl", "X"] },
-                { "desc": "Duplicate Line", "keys": ["Shift", "Alt", "↓"] },
-                { "desc": "Move Line Up", "keys": ["Alt", "↑"] },
-                { "desc": "Move Line Down", "keys": ["Alt", "↓"] },
-                { "desc": "Multi-cursor", "keys": ["Ctrl", "Alt", "↓"] }
-            ],
-            "การค้นหา": [
-                { "desc": "Find", "keys": ["Ctrl", "F"] },
-                { "desc": "Find and Replace", "keys": ["Ctrl", "H"] },
-                { "desc": "Find in Files", "keys": ["Ctrl", "Shift", "F"] },
-                { "desc": "Go to Line", "keys": ["Ctrl", "G"] }
-            ],
-            "Debugging": [
-                { "desc": "Start Debugging", "keys": ["F5"] },
-                { "desc": "Toggle Breakpoint", "keys": ["F9"] },
-                { "desc": "Step Over", "keys": ["F10"] },
-                { "desc": "Step Into", "keys": ["F11"] }
-            ]
-        }
-    },
-    "capcut": {
-        "name": "CapCut",
-        "description": "Video Editor สำหรับการตัดต่อวิดีโอ",
-        "icon": "CC",
-        "iconClass": "capcut-icon",
-        "categories": {
-            "การนำเข้าและส่งออก": [
-                { "desc": "Import Media", "keys": ["Ctrl", "I"] },
-                { "desc": "Export Video", "keys": ["Ctrl", "E"] },
-                { "desc": "New Project", "keys": ["Ctrl", "N"] },
-                { "desc": "Save Project", "keys": ["Ctrl", "S"] }
-            ],
-            "Timeline": [
-                { "desc": "Play/Pause", "keys": ["Space"] },
-                { "desc": "Split Clip", "keys": ["Ctrl", "B"] },
-                { "desc": "Delete Selected", "keys": ["Delete"] },
-                { "desc": "Undo", "keys": ["Ctrl", "Z"] },
-                { "desc": "Redo", "keys": ["Ctrl", "Y"] }
-            ],
-            "การเล่น": [
-                { "desc": "Go to Beginning", "keys": ["Home"] },
-                { "desc": "Go to End", "keys": ["End"] },
-                { "desc": "Previous Frame", "keys": ["←"] },
-                { "desc": "Next Frame", "keys": ["→"] },
-                { "desc": "Jump Back 10s", "keys": ["J"] },
-                { "desc": "Jump Forward 10s", "keys": ["L"] }
-            ],
-            "เครื่องมือ": [
-                { "desc": "Selection Tool", "keys": ["V"] },
-                { "desc": "Cut Tool", "keys": ["C"] },
-                { "desc": "Zoom In", "keys": ["Ctrl", "+"] },
-                { "desc": "Zoom Out", "keys": ["Ctrl", "-"] },
-                { "desc": "Fit to Screen", "keys": ["Ctrl", "0"] }
-            ]
-        }
-    },
-    "canva": {
-        "name": "Canva",
-        "description": "Graphic Design Platform สำหรับสร้างงานดิไซน์",
-        "icon": "CV",
-        "iconClass": "canva-icon",
-        "categories": {
-            "ทั่วไป": [
-                { "desc": "Undo", "keys": ["Ctrl", "Z"] },
-                { "desc": "Redo", "keys": ["Ctrl", "Y"] },
-                { "desc": "Copy", "keys": ["Ctrl", "C"] },
-                { "desc": "Paste", "keys": ["Ctrl", "V"] },
-                { "desc": "Duplicate", "keys": ["Ctrl", "D"] }
-            ],
-            "การจัดการ Elements": [
-                { "desc": "Group Elements", "keys": ["Ctrl", "G"] },
-                { "desc": "Ungroup Elements", "keys": ["Ctrl", "Shift", "G"] },
-                { "desc": "Bring Forward", "keys": ["Ctrl", "]"] },
-                { "desc": "Send Backward", "keys": ["Ctrl", "["] },
-                { "desc": "Bring to Front", "keys": ["Ctrl", "Shift", "]"] },
-                { "desc": "Send to Back", "keys": ["Ctrl", "Shift", "["] }
-            ],
-            "ข้อความ": [
-                { "desc": "Bold Text", "keys": ["Ctrl", "B"] },
-                { "desc": "Italic Text", "keys": ["Ctrl", "I"] },
-                { "desc": "Underline Text", "keys": ["Ctrl", "U"] },
-                { "desc": "Increase Font Size", "keys": ["Ctrl", "Shift", ">"] },
-                { "desc": "Decrease Font Size", "keys": ["Ctrl", "Shift", "<"] }
-            ],
-            "การแสดงผล": [
-                { "desc": "Zoom In", "keys": ["Ctrl", "+"] },
-                { "desc": "Zoom Out", "keys": ["Ctrl", "-"] },
-                { "desc": "Fit to Screen", "keys": ["Ctrl", "0"] },
-                { "desc": "Actual Size", "keys": ["Ctrl", "1"] },
-                { "desc": "Present", "keys": ["Ctrl", "Enter"] }
-            ]
-        }
-    }
-};
-
 // Global variables
-let currentPrograms = Object.keys(programsData);
+let programsData = {};
+let currentPrograms = [];
+
+// JSON files list - add new files here when you create more cheat sheets
+const jsonFiles = ['vscode.json', 'capcut.json', 'canva.json'];
+
+// Load all JSON files from json/ folder
+async function loadAllPrograms() {
+    try {
+        const loadPromises = jsonFiles.map(async (filename) => {
+            try {
+                const response = await fetch(`json/${filename}`);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filename}: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error(`Error loading ${filename}:`, error);
+                return null;
+            }
+        });
+
+        const results = await Promise.all(loadPromises);
+        
+        // Filter out failed loads and build programsData object
+        results.forEach(program => {
+            if (program && program.id) {
+                programsData[program.id] = program;
+            }
+        });
+
+        currentPrograms = Object.keys(programsData);
+        
+        if (currentPrograms.length === 0) {
+            throw new Error('No programs loaded successfully');
+        }
+
+        console.log(`Successfully loaded ${currentPrograms.length} programs:`, currentPrograms);
+        
+    } catch (error) {
+        console.error('Error loading programs:', error);
+        showError('ไม่สามารถโหลดข้อมูลโปรแกรมได้ กรุณาตรวจสอบไฟล์ JSON');
+    }
+}
+
+// Show error message
+function showError(message) {
+    const gallery = document.getElementById('programGallery');
+    gallery.innerHTML = `
+        <div class="error-message">
+            <div class="error-icon">⚠️</div>
+            <h3>เกิดข้อผิดพลาด</h3>
+            <p>${message}</p>
+        </div>
+    `;
+}
 
 // Initialize the app
-function init() {
+async function init() {
+    showLoading();
+    await loadAllPrograms();
+    hideLoading();
     renderGallery();
     setupSearch();
+}
+
+// Show loading indicator
+function showLoading() {
+    const gallery = document.getElementById('programGallery');
+    gallery.innerHTML = `
+        <div class="loading-message">
+            <div class="loading-spinner">🔄</div>
+            <p>กำลังโหลดข้อมูล...</p>
+        </div>
+    `;
+}
+
+// Hide loading indicator
+function hideLoading() {
+    // Loading will be replaced by renderGallery()
 }
 
 // Render program gallery
@@ -124,8 +87,15 @@ function renderGallery() {
     const gallery = document.getElementById('programGallery');
     gallery.innerHTML = '';
 
+    if (currentPrograms.length === 0) {
+        showError('ไม่พบข้อมูลโปรแกรมที่ตรงกับการค้นหา');
+        return;
+    }
+
     currentPrograms.forEach(programId => {
         const program = programsData[programId];
+        if (!program) return;
+
         const totalShortcuts = Object.values(program.categories)
             .reduce((total, category) => total + category.length, 0);
 
@@ -147,6 +117,11 @@ function renderGallery() {
 // Show program details
 function showDetails(programId) {
     const program = programsData[programId];
+    if (!program) {
+        console.error(`Program ${programId} not found`);
+        return;
+    }
+
     const gallery = document.getElementById('programGallery');
     const detailView = document.getElementById('detailView');
     const searchContainer = document.querySelector('.search-container');
@@ -208,7 +183,7 @@ function showGallery() {
 function setupSearch() {
     const searchBox = document.getElementById('searchBox');
     searchBox.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
+        const searchTerm = e.target.value.toLowerCase().trim();
         
         if (searchTerm === '') {
             currentPrograms = Object.keys(programsData);
@@ -224,5 +199,23 @@ function setupSearch() {
     });
 }
 
+// Auto-reload functionality (optional - for development)
+function enableAutoReload() {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        setInterval(async () => {
+            try {
+                const response = await fetch('json/');
+                // This is just a simple check - you might want to implement
+                // more sophisticated change detection
+            } catch (error) {
+                // Ignore errors in auto-reload
+            }
+        }, 5000);
+    }
+}
+
 // Initialize when page loads
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+    init();
+    enableAutoReload();
+});

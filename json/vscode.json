@@ -1,0 +1,36 @@
+{
+    "id": "vscode",
+    "name": "Visual Studio Code",
+    "description": "Code Editor ที่มีประสิทธิภาพสูง",
+    "icon": "VS",
+    "iconClass": "vscode-icon",
+    "categories": {
+        "ทั่วไป": [
+            { "desc": "Command Palette", "keys": ["Ctrl", "Shift", "P"] },
+            { "desc": "Quick Open File", "keys": ["Ctrl", "P"] },
+            { "desc": "Settings", "keys": ["Ctrl", ","] },
+            { "desc": "Toggle Terminal", "keys": ["Ctrl", "`"] },
+            { "desc": "New File", "keys": ["Ctrl", "N"] }
+        ],
+        "การแก้ไข": [
+            { "desc": "Copy Line", "keys": ["Ctrl", "C"] },
+            { "desc": "Cut Line", "keys": ["Ctrl", "X"] },
+            { "desc": "Duplicate Line", "keys": ["Shift", "Alt", "↓"] },
+            { "desc": "Move Line Up", "keys": ["Alt", "↑"] },
+            { "desc": "Move Line Down", "keys": ["Alt", "↓"] },
+            { "desc": "Multi-cursor", "keys": ["Ctrl", "Alt", "↓"] }
+        ],
+        "การค้นหา": [
+            { "desc": "Find", "keys": ["Ctrl", "F"] },
+            { "desc": "Find and Replace", "keys": ["Ctrl", "H"] },
+            { "desc": "Find in Files", "keys": ["Ctrl", "Shift", "F"] },
+            { "desc": "Go to Line", "keys": ["Ctrl", "G"] }
+        ],
+        "Debugging": [
+            { "desc": "Start Debugging", "keys": ["F5"] },
+            { "desc": "Toggle Breakpoint", "keys": ["F9"] },
+            { "desc": "Step Over", "keys": ["F10"] },
+            { "desc": "Step Into", "keys": ["F11"] }
+        ]
+    }
+}
